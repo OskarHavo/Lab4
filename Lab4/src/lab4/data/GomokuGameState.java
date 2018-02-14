@@ -20,6 +20,9 @@ public class GomokuGameState extends Observable implements Observer{
 	
     //Possible game states
 	private final int NOT_STARTED = 0;
+	private final int MY_TURN = 1;
+	private final int OTHERS_TURN = 2;
+	private final int FINISHED = 3;
 	private int currentState;
 	
 	private GomokuClient client;
@@ -60,7 +63,10 @@ public class GomokuGameState extends Observable implements Observer{
 	 * @param x the x coordinate
 	 * @param y the y coordinate
 	 */
-	public void move(int x, int y){}
+	public void move(int x, int y){
+		
+		
+	}
 	
 	/**
 	 * Starts a new game with the current client
