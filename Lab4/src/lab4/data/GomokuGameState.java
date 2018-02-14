@@ -21,7 +21,7 @@ public class GomokuGameState extends Observable implements Observer{
     //Possible game states
 	private final int NOT_STARTED = 0;
 	private final int MY_TURN = 1;
-	private final int OTHERS_TURN = 2;
+	private final int OTHER_TURN = 2;
 	private final int FINISHED = 3;
 	private int currentState;
 	
@@ -48,14 +48,20 @@ public class GomokuGameState extends Observable implements Observer{
 	 * 
 	 * @return the message string
 	 */
-	public String getMessageString(){}
+	public String getMessageString(){
+		
+		return null;
+	}
 	
 	/**
 	 * Returns the game grid
 	 * 
 	 * @return the game grid
 	 */
-	public GameGrid getGameGrid(){}
+	public GameGrid getGameGrid(){
+		
+		return null;
+	}
 
 	/**
 	 * This player makes a move at a specified location
