@@ -11,13 +11,17 @@ public class GameGrid extends Observable{
 	public static final int ME = 1;
 	public static final int OTHER = 2;
 
+	private int[][] grid;
+	private int INROW = 2;
 	
 	/**
 	 * Constructor
 	 * 
 	 * @param size The width/height of the game grid
 	 */
-	public GameGrid(int size){}
+	public GameGrid(int size){
+		grid = new int[size][size];
+	}
 	
 	/**
 	 * Reads a location of the grid
@@ -27,13 +31,12 @@ public class GameGrid extends Observable{
 	 * @return the value of the specified location
 	 */
 	public int getLocation(int x, int y){
-		
-		return 0;
+		return grid[x][y];
 	}
 	
 	/**
 	 * Returns the size of the grid
-	 * 
+	 * 	
 	 * @return the grid size
 	 */
 	public int getSize(){
@@ -67,5 +70,30 @@ public class GameGrid extends Observable{
 		return false;
 	}
 	
+	private boolean horizontalWinner(int player) {
+		int streak = 0;
+		
+		for(int[] row : grid) {
+			for(int val : row) {
+				if(val == player) {
+					streak++;
+					if (streak >= INROW) {
+						return true;
+					}
+				} else {
+					streak = 0;
+				}
+			}
+			streak = 0;
+		}
+		return false;
+	}
 	
+	public static void main(String[] args) {
+		GameGrid test = new GameGrid(5);
+		test.grid[1][2] = 1;
+		test.grid[1][0] = 1;
+		//System.out.println(test.getLocation(1, 1));
+		System.out.println(test.horizontalWinner(1));
+	}
 }
