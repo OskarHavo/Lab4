@@ -67,7 +67,7 @@ public class GameGrid extends Observable{
 	 * @return true if player has 5 in row, false otherwise
 	 */
 	public boolean isWinner(int player){
-		return false;
+		return horizontalWinner(player) || verticalWinner(player) || diagonalWinner(player);
 	}
 	
 	private boolean horizontalWinner(int player) {
@@ -89,6 +89,14 @@ public class GameGrid extends Observable{
 		return false;
 	}
 	
+	private boolean verticalWinner(int player) {
+		int[][] temp =
+		return false;
+	}
+	
+	private boolean diagonalWinner(int player) {
+		return false;
+	}
 	public static void main(String[] args) {
 		GameGrid test = new GameGrid(5);
 		test.grid[1][2] = 1;
