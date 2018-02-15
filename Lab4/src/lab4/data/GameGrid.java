@@ -48,7 +48,6 @@ public class GameGrid extends Observable {
 	 * @return the grid size
 	 */
 	public int getSize() {
-		// return (this.size * this.size); // Size kvadrat
 		return this.size;
 	}
 
@@ -125,6 +124,7 @@ public class GameGrid extends Observable {
 						return true;
 					}
 				}
+				// Måste återställas efter varje while loop.
 				counter = 0;
 				range = 0;
 
@@ -147,7 +147,6 @@ public class GameGrid extends Observable {
 				counter = 0;
 				range = 0;
 
-				// range = y;
 				int rangeY = 0;
 				while (x + range < this.size && y - range >= 0 && getLocation((x + range++), y - rangeY++) == player) {// Sydöst
 					counter++;
