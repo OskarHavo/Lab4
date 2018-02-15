@@ -49,7 +49,6 @@ public class GomokuGameState extends Observable implements Observer{
 	 * @return the message string
 	 */
 	public String getMessageString(){
-		
 		return message;
 	}
 	
@@ -59,7 +58,6 @@ public class GomokuGameState extends Observable implements Observer{
 	 * @return the game grid
 	 */
 	public GameGrid getGameGrid(){
-		
 		return gameGrid;
 	}
 
@@ -96,13 +94,28 @@ public class GomokuGameState extends Observable implements Observer{
 	/**
 	 * Starts a new game with the current client
 	 */
-	public void newGame(){}
+	public void newGame(){
+		getGameGrid().clearGrid();
+		currentState = OTHER_TURN;
+		message = "Du har utmanat en annan spelare.";
+		client.sendNewGameMessage();
+		
+		setChanged();
+		notifyObservers();
+	}
 	
 	/**
 	 * Other player has requested a new game, so the 
 	 * game state is changed accordingly
 	 */
-	public void receivedNewGame(){}
+	public void receivedNewGame(){
+		getGameGrid().clearGrid();
+		currentState = MY_TURN;
+		message = "Du har blivit utmanad. Din tur!";
+		
+		setChanged();
+		notifyObservers();
+	}
 	
 	/**
 	 * The connection to the other player is lost, 
@@ -167,9 +180,7 @@ public class GomokuGameState extends Observable implements Observer{
 			break;
 		}
 		setChanged();
-		notifyObservers();
-		
-		
+		notifyObservers();	
 	}
 	
 }
