@@ -11,18 +11,18 @@ public class GomokuMain {
 	 */
 	public static void main(String[] args) {
 		int port;
-		if(args.length==1) {
-			//argument
+		if (args.length == 1) {
+			// argument
 			port = Integer.parseInt(args[0]);
-		
-		}else {
-			//default
+
+		} else {
+			// default
 			port = 4000;
 		}
 		GomokuClient client = new GomokuClient(port);
 		GomokuGameState gameState = new GomokuGameState(client);
-		GomokuGUI gui = new GomokuGUI(gameState,client);
-		
+		GomokuGUI gui = new GomokuGUI(gameState, client);
+
 	}
 
 }
