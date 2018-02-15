@@ -50,14 +50,10 @@ public class GomokuGUI implements Observer {
 
 		// jframe
 		frame = new JFrame();
-		frame.setPreferredSize(new Dimension(400, 500));
+		frame.setPreferredSize(new Dimension(325, 400)); // Storlek så att layouten ser ut som på bilden.
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		// jpanel
-		panel = new JPanel();
-		panel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
 		// Grid och dess mouselistener.
 		gameGridPanel = new GamePanel(this.gamestate.getGameGrid());
@@ -67,9 +63,6 @@ public class GomokuGUI implements Observer {
 				gamestate.move(mousePosition[0], mousePosition[1]); // [0] x coord ; [1] y coord
 			}
 		});
-
-		panel.add(gameGridPanel);
-		frame.add(panel);
 
 		// buttons
 		connectButton = new JButton("Connect");
@@ -111,12 +104,21 @@ public class GomokuGUI implements Observer {
 		messageLabel = new JLabel("Welcome to Gomoku!");
 		messageLabel.setVisible(true);
 
+		// jpanel
+		panel = new JPanel();
+		panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+		panel.add(gameGridPanel);
 		panel.add(connectButton);
 		panel.add(newGameButton);
 		panel.add(disconnectButton);
 		panel.add(messageLabel);
 
+		frame.add(panel);
+
 		frame.pack();
+		gameGridPanel.setVisible(true);
+		panel.setVisible(true);
 		frame.setVisible(true);
 
 	}
