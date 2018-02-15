@@ -73,6 +73,7 @@ public class GomokuGameState extends Observable implements Observer{
 			if (getGameGrid().move(x, y, 1)) {
 				message = "Du gjorde ett drag";
 				client.sendMoveMessage(x, y);
+				currentState = 2;
 				if(getGameGrid().isWinner(1)) {
 					message = "Du vann!";
 					currentState = 3;
@@ -152,6 +153,7 @@ public class GomokuGameState extends Observable implements Observer{
 			
 			if (getGameGrid().move(x, y, 2)) {
 				message = "Din motståndare gjorde ett drag";
+				currentState = 1;
 				if(getGameGrid().isWinner(1)) {
 					message = "Du förlorade!";
 					currentState = 3;
