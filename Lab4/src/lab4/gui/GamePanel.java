@@ -80,12 +80,12 @@ public class GamePanel extends JPanel implements Observer {
 
 				} else if (grid.getLocation(x, y) == grid.OTHER) {
 					g.setColor(Color.RED);
-					g.drawLine(UNIT_SIZE * x, UNIT_SIZE * y, UNIT_SIZE * x + x, y * UNIT_SIZE + y);
-					g.drawLine(UNIT_SIZE * x, y * UNIT_SIZE + y, UNIT_SIZE * x + x, UNIT_SIZE * y);
+					g.drawLine(UNIT_SIZE * x, UNIT_SIZE * y, UNIT_SIZE * x + UNIT_SIZE, y * UNIT_SIZE + UNIT_SIZE);
+					g.drawLine(UNIT_SIZE * x + UNIT_SIZE, y * UNIT_SIZE, UNIT_SIZE * x, UNIT_SIZE * y + UNIT_SIZE);
 					// g.drawRect(x * UNIT_SIZE, y * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
 
 				}
-
+				g.setColor(Color.BLACK);
 			}
 
 		}
