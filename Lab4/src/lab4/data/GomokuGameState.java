@@ -108,12 +108,25 @@ public class GomokuGameState extends Observable implements Observer{
 	 * The connection to the other player is lost, 
 	 * so the game is interrupted
 	 */
-	public void otherGuyLeft(){}
+	public void otherGuyLeft(){
+		getGameGrid().clearGrid();
+		currentState = NOT_STARTED;
+		message = "Player disconnected!";
+		setChanged();
+		notifyObservers();
+	}
 	
 	/**
 	 * The player disconnects from the client
 	 */
-	public void disconnect(){}
+	public void disconnect(){
+		getGameGrid().clearGrid();
+		currentState = NOT_STARTED;
+		message = "Player disconnected";
+		setChanged();
+		notifyObservers();
+		client.disconnect();
+	}
 	
 	/**
 	 * The player receives a move from the other player
@@ -121,7 +134,25 @@ public class GomokuGameState extends Observable implements Observer{
 	 * @param x The x coordinate of the move
 	 * @param y The y coordinate of the move
 	 */
-	public void receivedMove(int x, int y){}
+	public void receivedMove(int x, int y){
+		if(currentState == OTHER_TURN) {
+			
+			if (getGameGrid().move(x, y, 2)) {
+				message = "Din motståndare gjorde ett drag";
+				if(getGameGrid().isWinner(1)) {
+					message = "Du förlorade!";
+					currentState = 3;
+				}
+			}
+			
+		} else if (currentState == NOT_STARTED){
+			message = "Spelet inte startat";
+		} else {
+			message = "Det är inte din tur!";
+		}
+		setChanged();
+		notifyObservers();
+	}
 	
 	public void update(Observable o, Object arg) {
 		
