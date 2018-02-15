@@ -50,7 +50,7 @@ public class GomokuGameState extends Observable implements Observer{
 	 */
 	public String getMessageString(){
 		
-		return null;
+		return message;
 	}
 	
 	/**
@@ -60,7 +60,7 @@ public class GomokuGameState extends Observable implements Observer{
 	 */
 	public GameGrid getGameGrid(){
 		
-		return null;
+		return gameGrid;
 	}
 
 	/**
@@ -70,7 +70,26 @@ public class GomokuGameState extends Observable implements Observer{
 	 * @param y the y coordinate
 	 */
 	public void move(int x, int y){
-		
+		if(currentState == MY_TURN) {
+			
+			if (getGameGrid().move(x, y, 1)) {
+				message = "Du gjorde ett drag";
+				client.sendMoveMessage(x, y);
+				if(getGameGrid().isWinner(1)) {
+					message = "Du vann!";
+					currentState = 3;
+				}
+			} else {
+				message = "Så kan du inte göra!";
+			}
+			
+		} else if (currentState == NOT_STARTED){
+			message = "Spelet inte startat";
+		} else {
+			message = "Det är inte din tur!";
+		}
+		setChanged();
+		notifyObservers();
 		
 	}
 	
