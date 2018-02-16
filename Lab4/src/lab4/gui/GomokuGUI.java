@@ -15,7 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import lab4.client.GomokuClient;
-import lab4.data.GameGrid;
 import lab4.data.GomokuGameState;
 
 /*
@@ -24,15 +23,17 @@ import lab4.data.GomokuGameState;
 
 public class GomokuGUI implements Observer {
 
+	// Klassinstanser.
 	private GomokuClient client;
 	private GomokuGameState gamestate;
+	private GamePanel gameGridPanel;
 
+	// Swing komponenter.
 	private JButton connectButton, disconnectButton, newGameButton;
 	private JLabel messageLabel;
 	private JFrame frame;
 	private JPanel panel;
-	private GamePanel gameGridPanel;
-
+	
 	/**
 	 * The constructor
 	 * 
@@ -48,7 +49,7 @@ public class GomokuGUI implements Observer {
 		client.addObserver(this);
 		gamestate.addObserver(this);
 
-		// jframe
+		// JFrame Init
 		frame = new JFrame();
 		frame.setPreferredSize(new Dimension(325, 400)); // Storlek så att layouten ser ut som på bilden.
 		frame.setResizable(false);
@@ -64,7 +65,7 @@ public class GomokuGUI implements Observer {
 			}
 		});
 
-		// buttons
+		// JButton Init, med anonyma inre klasser.
 		connectButton = new JButton("Connect");
 		connectButton.setVisible(true);
 		connectButton.addActionListener(new ActionListener() {
@@ -100,11 +101,11 @@ public class GomokuGUI implements Observer {
 
 		});
 
-		// label
+		// JLabel Init
 		messageLabel = new JLabel("Welcome to Gomoku!");
 		messageLabel.setVisible(true);
 
-		// jpanel
+		// JPanel init
 		panel = new JPanel();
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
@@ -115,14 +116,19 @@ public class GomokuGUI implements Observer {
 		panel.add(messageLabel);
 
 		frame.add(panel);
-
 		frame.pack();
+		
 		gameGridPanel.setVisible(true);
 		panel.setVisible(true);
 		frame.setVisible(true);
 
 	}
 
+	/**
+	 * @param arg0
+	 * 
+	 * @param arg1
+	 */
 	public void update(Observable arg0, Object arg1) {
 
 		// Update the buttons if the connection status has changed

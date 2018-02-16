@@ -45,14 +45,24 @@ public class GamePanel extends JPanel implements Observer {
 	 * @return an integer array containing the [x, y] grid position
 	 */
 	public int[] getGridPosition(int x, int y) {
-		// returneraar kvoten mellan x och y coordinat och UNIT_SIZE
+		// returnerar kvoten mellan x och y coordinat och UNIT_SIZE
 		return new int[] { x / this.UNIT_SIZE, y / this.UNIT_SIZE };
 	}
 
+	/**
+	 * @param arg0
+	 * 
+	 * @param arg1
+	 */
 	public void update(Observable arg0, Object arg1) {
 		this.repaint();
 	}
 
+	/**
+	 * Ritar ut brädet och även symbolerna för spelar- resp motståndarrutorna.
+	 * 
+	 * @param g
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		// Itererar igenom och ritar ut rektanglar.
