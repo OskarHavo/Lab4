@@ -152,7 +152,7 @@ public class GomokuGameState extends Observable implements Observer{
 		if(currentState == OTHER_TURN) {
 			
 			if (getGameGrid().move(x, y, 2)) {
-				message = "Din motståndare gjorde ett drag";
+				message = "Din motståndare gjorde ett drag. Din tur!";
 				currentState = 1;
 				if(getGameGrid().isWinner(2)) {
 					message = "Du förlorade!";
@@ -161,7 +161,7 @@ public class GomokuGameState extends Observable implements Observer{
 			}
 			
 		} else if (currentState == NOT_STARTED){
-			message = "Spelet inte startat";
+			message = "Spelet har inte startat!";
 		} else {
 			message = "Det är inte din tur!";
 		}

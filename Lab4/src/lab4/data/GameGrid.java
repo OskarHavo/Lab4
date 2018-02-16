@@ -59,7 +59,8 @@ public class GameGrid extends Observable {
 	 *            the x position
 	 * @param y
 	 *            the y position
-	 * @param player
+	 * @param player the player to move
+	 * 
 	 * @return true if the insertion worked, false otherwise
 	 */
 	public boolean move(int x, int y, int player) {
@@ -101,8 +102,8 @@ public class GameGrid extends Observable {
 	/**
 	 * Check if a player has 5 in row
 	 * 
-	 * @param player
-	 *            the player to check for
+	 * @param player the player to check for
+	 *            
 	 * @return true if player has 5 in row, false otherwise
 	 */
 	public boolean isWinner(int player) {

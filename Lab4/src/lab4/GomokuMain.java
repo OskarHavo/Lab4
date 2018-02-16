@@ -7,7 +7,7 @@ import lab4.gui.GomokuGUI;
 public class GomokuMain {
 	/**
 	 * 
-	 * @param args
+	 * @param args Portnr
 	 */
 	public static void main(String[] args) {
 		int port;
