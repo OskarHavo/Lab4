@@ -1,6 +1,3 @@
-/*
- * Created on 2007 feb 8
- */
 package lab4.data;
 
 import java.util.Observable;

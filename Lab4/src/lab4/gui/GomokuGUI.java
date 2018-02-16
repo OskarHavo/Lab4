@@ -21,6 +21,12 @@ import lab4.data.GomokuGameState;
  * The GUI class
  */
 
+/**
+ * 
+ * GUI bestående av en GamePanel och knappar för att styra spelet 
+ *
+ */
+
 public class GomokuGUI implements Observer {
 
 	// Klassinstanser.
