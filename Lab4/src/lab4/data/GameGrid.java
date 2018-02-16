@@ -107,7 +107,7 @@ public class GameGrid extends Observable {
 	 */
 	public boolean isWinner(int player) {
 		int counter = 0;
-		int range = 0;
+		int next = 0;
 		for (int x = 0; x < size; x++) {
 			for (int y = 0; y < size; y++) {
 
@@ -119,7 +119,7 @@ public class GameGrid extends Observable {
 				 * annars nollställ counter & range och gå till den vertikala kontrollen osv.
 				 */
 
-				while (range < INROW && x + range < this.size && getLocation((x + range++), y) == player) { // Höger
+				while (next < INROW && x + next < this.size && getLocation((x + next++), y) == player) { // Höger
 					counter++;
 					if (counter == INROW) {
 						return true;
@@ -127,36 +127,36 @@ public class GameGrid extends Observable {
 				}
 				// Måste återställas efter varje while loop.
 				counter = 0;
-				range = 0;
+				next = 0;
 
-				while (range < INROW && y + range < this.size && getLocation(x, (y + range++)) == player) { // Uppåt
+				while (next < INROW && y + next < this.size && getLocation(x, (y + next++)) == player) { // Uppåt
 					counter++;
 					if (counter == INROW) {
 						return true;
 					}
 				}
 				counter = 0;
-				range = 0;
+				next = 0;
 
-				while (x + range < this.size && y + range < this.size
-						&& getLocation(x + range, (y + range++)) == player) { // Nordöst
+				while (x + next < this.size && y + next < this.size
+						&& getLocation(x + next, (y + next++)) == player) { // Nordöst
 					counter++;
 					if (counter == INROW) {
 						return true;
 					}
 				}
 				counter = 0;
-				range = 0;
+				next = 0;
 
 				int rangeY = 0;
-				while (x + range < this.size && y - range >= 0 && getLocation((x + range++), y - rangeY++) == player) {// Sydöst
+				while (x + next < this.size && y - next >= 0 && getLocation((x + next++), y - rangeY++) == player) {// Sydöst
 					counter++;
 					if (counter == INROW) {
 						return true;
 					}
 				}
 				counter = 0;
-				range = 0;
+				next = 0;
 
 			}
 
